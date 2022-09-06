@@ -9,15 +9,17 @@ export const alertSlice = createSlice({
     },
     reducers: {
         success: (state, action) => {
-            state.success = action.payload;
+            return {...state, success: action.payload};
         },
         error: (state, action) => {
-            state.error = action.payload;
+            return {...state, error: action.payload};
         },
         clear: (state) => {
-            state.success = "";
-            state.error = "";
-            state.message = "";
+            return {
+                error: "",
+                message: "",
+                success: "",
+            }
         },
     },
 });
