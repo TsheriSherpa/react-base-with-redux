@@ -12,7 +12,7 @@ function loginUser(email, password) {
         body: JSON.stringify({ email, password })
     };
 
-    return fetch(`https://mnm.truestreamz.com/api/net-tv/login`, requestOptions)
+    return fetch(`https://mnmdev1.truestreamz.com/api/net-tv/login`, requestOptions)
         .then((response) => {
             return response.json().then(text => {
                 if (!response.ok) {
