@@ -9,13 +9,14 @@ import {
 	SidebarHeader,
 	SubMenu
 } from "react-pro-sidebar";
+
+import styled from "styled-components";
 import "react-pro-sidebar/dist/css/styles.css";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
-import styled from "styled-components";
 
 import { logout } from "/src/redux/reducers/userReducer";
-import { userActions } from "../../redux/actions/user-action";
+import { authService } from "/src/services/auth-service";
 
 const Menuitem = styled(MenuItem)`
 	:hover {
@@ -35,15 +36,34 @@ const Sidebar = () => {
 		},
 		menuIcon: {
 			float: "right",
-			margin: "10px"
+			margin: "10px",
+			marginTop: "0px"
+		},
+		headerItems: {
+			display: "flex",
+			marginTop: "10px",
+			justifyContent: "flex-end"
+		},
+		brandName: {
+			marginRight: "80px"
 		}
+
 	};
 	const onClickMenuIcon = () => {
 		setCollapsed(!collapsed);
+		var x = document.getElementById("headerBrandItem");
+		var y = document.getElementById("sidebarHeader");
+		if (!collapsed) {
+			x.style.display = "none";
+			y.style.justifyContent = "center";
+		} else {
+			x.style.display = "block";
+			y.style.justifyContent = "flex-end";
+		}
 	};
 
 	const handleLogout = () => {
-		userActions.logoutUser();
+		authService.logoutUser();
 		dispatch(logout());
 		navigate("/login");
 	}
@@ -51,9 +71,14 @@ const Sidebar = () => {
 	return (
 		<ProSidebar style={styles.sideBarHeight} collapsed={collapsed}>
 			<SidebarHeader>
-				<div style={styles.menuIcon}>
-					<FiLogOut style={{ marginRight: "10px" }} onClick={handleLogout}/>	
-					<AiOutlineMenu onClick={onClickMenuIcon}/>
+				<div style={styles.headerItems} id="sidebarHeader">
+					<div className="headerBrandItem" id ="headerBrandItem">
+						<span style={styles.brandName}>Payment Service</span>
+						<FiLogOut onClick={handleLogout} />	
+					</div>
+					<div style={styles.menuIcon}>
+						<AiOutlineMenu onClick={onClickMenuIcon}/>
+					</div>
 				</div>
 			</SidebarHeader>
 			<Menu iconShape="square">
