@@ -10,95 +10,7 @@ import { useForm } from 'react-hook-form';
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
 
 
-// function Login() {
-//     const store = useStore();
-//     const navigate = useNavigate();
-//     const { test, setTest } = useState("");
-//     const { show, setShow } = useState(false);
-//     const { register, handleSubmit, formState } = useForm();
-//     const error = useSelector((state) => state.alert.error)
-//     const { isSubmitting, errors } = formState;
-    
-//     console.log("hi")
-//     const togglePassword = () => { setShow(!show) };
-    
-//     const submitFormHandler = (data) => {
-//         return new Promise((resolve) => {
-//             authService.loginUser(data.email, data.password)
-//                 .then(
-//                     user => {
-//                         store.dispatch(login(user));
-//                         store.dispatch(clear());
-//                         navigate('/');
-//                     },
-//                     error => {
-//                         store.dispatch(failure(error.toString()));
-//                         setTimeout(() => store.dispatch(clear()), 5000)
-//                         resolve();
-//                     }
-//             );
-//         })
-//     }
-
-//     useEffect(() => {
-//         if (store.getState().user.loggedIn) {
-//             navigate('/');
-//         }   
-//     })
-
-    
-//     return (
-//         <div className="login-page">
-//             <div className="form">
-//                 <form className="login-form" onSubmit={handleSubmit(submitFormHandler)}>
-//                     <h2>SIGN IN </h2>
-//                     {error && 
-//                         <span style={{ color:"red" }}>{error}</span>}
-//                     {errors.Email &&
-//                         <span style={{ color: "red" }}>{errors.Email.message}</span>}
-                    
-//                     <input
-//                         type="text"
-//                         placeholder="Email"
-//                         name="email"
-//                         required
-//                         {
-//                             ...register("email",
-//                             {
-//                                 required: true,
-//                                 pattern: { value: /^\S+@\S+$/i, message: "Enter valid email" },
-//                                 })} />
-//                     <input
-//                         id="pass"
-//                         type={show ? "text" : "password"}
-//                         placeholder="password"
-//                         name="password"
-//                         required
-//                         {
-//                             ...register("password", {})
-//                         } />
-//                     <div style={{ position: "absolute", top:"195px", right: "55px" }} onClick={() => togglePassword}>
-//                         { !show && <FaRegEyeSlash id="hide-icon" />}
-//                         { show && <FaRegEye id="show-icon" style={{ display: "none" }} />}
-//                     </div>
-//                     <span id="vaild-pass"></span>
-//                     <Button
-//                         type="submit"
-//                         variant="primary"
-//                         disabled={isSubmitting}
-//                     >
-//                         {isSubmitting &&  (<span className="spinner-border spinner-border-sm mr-1"></span>)} Login
-//                     </Button>
-//                 </form>
-//             </div>
-//         </div>
-//     )
-// }
-
-// export default Login
-
 export default function Login() {
-    
     const store = useStore();
     const navigate = useNavigate();
     const { register, handleSubmit, formState } = useForm();
@@ -129,6 +41,8 @@ export default function Login() {
             );
         })
     }
+
+    
     return (
         <div className="login-page">
             <div className="form">

@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { FiLogOut } from "react-icons/fi";
 import { AiOutlineMenu } from "react-icons/ai";
 import { FaCog, FaUserTie, FaColumns, FaThList } from "react-icons/fa";
-import { FiLogOut } from "react-icons/fi";
 import {
 	Menu,
 	MenuItem,
@@ -47,8 +47,8 @@ const Sidebar = () => {
 		brandName: {
 			marginRight: "80px"
 		}
-
 	};
+
 	const onClickMenuIcon = () => {
 		setCollapsed(!collapsed);
 		var x = document.getElementById("headerBrandItem");
@@ -59,9 +59,16 @@ const Sidebar = () => {
 		} else {
 			y.style.justifyContent = "flex-end";
 			setTimeout(() => x.style.display = "block", 300);
-			
 		}
 	};
+
+	const handleBrandClick = () => {
+		navigate("/");
+	}
+
+	const handleBrandHover = (e) => {
+		e.target.style.cursor = "pointer";
+	}
 
 	const handleLogout = () => {
 		authService.logoutUser();
@@ -73,8 +80,8 @@ const Sidebar = () => {
 		<ProSidebar style={styles.sideBarHeight} collapsed={collapsed}>
 			<SidebarHeader>
 				<div style={styles.headerItems} id="sidebarHeader">
-					<div className="headerBrandItem" id ="headerBrandItem">
-						<span style={styles.brandName}>Payment Service</span>
+					<div className="headerBrandItem" id ="headerBrandItem" onMouseEnter={(e) => handleBrandHover(e)}>
+						<span style={styles.brandName} onClick={handleBrandClick}>Payment Service</span>
 						<FiLogOut onClick={handleLogout} />	
 					</div>
 					<div style={styles.menuIcon}>
