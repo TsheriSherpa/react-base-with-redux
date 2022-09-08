@@ -57,8 +57,9 @@ const Sidebar = () => {
 			x.style.display = "none";
 			y.style.justifyContent = "center";
 		} else {
-			x.style.display = "block";
 			y.style.justifyContent = "flex-end";
+			setTimeout(() => x.style.display = "block", 300);
+			
 		}
 	};
 
