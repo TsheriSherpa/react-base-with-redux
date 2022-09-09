@@ -24,6 +24,13 @@ export default function Login() {
         setShowPassword(!showPassword);
     };
 
+    useEffect(() => {
+        // redirect to dashboard if already logged in
+        if (store.getState().user.loggedIn) {
+            navigate("/");
+        }
+    })
+
     const submitFormHandler = (data) => {
         return new Promise((resolve) => {
             authService.loginUser(data.email, data.password)
