@@ -1,15 +1,11 @@
 import Sidebar from "../components/Sidebar";
+import MasterLayout from "./MasterLayout";
 
 function Dashboard() {
 	return (
-		<div className="col-md-12">
-			<div className="col-sm-3">
-				<Sidebar></Sidebar>
-			</div>
-			<div className="col-sm-9">
-				
-			</div>
-		</div>
+		<MasterLayout>
+			<h1>Dashboard</h1>
+		</MasterLayout>
 	);
 }
 export default Dashboard;

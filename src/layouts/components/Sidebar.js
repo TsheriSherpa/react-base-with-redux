@@ -6,6 +6,8 @@ import {
 	Menu,
 	MenuItem,
 	ProSidebar,
+	SidebarContent,
+	SidebarFooter,
 	SidebarHeader,
 	SubMenu
 } from "react-pro-sidebar";
@@ -17,11 +19,12 @@ import { useNavigate } from "react-router";
 
 import { logout } from "/src/redux/reducers/userReducer";
 import { authService } from "/src/services/auth-service";
+import { Link } from "react-router-dom";
 
 const Menuitem = styled(MenuItem)`
 	:hover {
-		background-color: #ffdb58;
-		padding: 5px;
+		background-color: dimgrey;
+		padding: 2px;
 		border-radius: 10px;
 		}
 	`;
@@ -89,21 +92,28 @@ const Sidebar = () => {
 					</div>
 				</div>
 			</SidebarHeader>
-			<Menu iconShape="square">
-				<Menuitem icon={<FaColumns />}> Dashboard</Menuitem>
-				<Menuitem icon={<FaUserTie />} href="/employees">
-					Employees
-				</Menuitem>
-				<SubMenu title="Stages" icon={<FaThList />}>
-					<Menuitem>Offer Letter</Menuitem>
-					<MenuItem>Skill Matrix</MenuItem>
-					<MenuItem>Know Your Company</MenuItem>
-					<MenuItem>Joining Day Information</MenuItem>
-					<MenuItem>Feedback</MenuItem>
-					<MenuItem>Background Check</MenuItem>
-				</SubMenu>
-				<Menuitem icon={<FaCog />}>Settings</Menuitem>
-			</Menu>
+
+			<SidebarContent>
+				<Menu iconShape="square" className="open">
+					<Menuitem icon={<FaColumns />}>
+					<Link to="/">Dashboard </Link>
+					</Menuitem>
+					<Menuitem icon={<FaUserTie />}>
+						<Link to="/consumer-apps">Consumer Apps </Link>
+					</Menuitem>
+					<SubMenu title="Stages" icon={<FaThList />}>
+						<Menuitem>Offer Letter</Menuitem>
+						<MenuItem>Skill Matrix</MenuItem>
+						<MenuItem>Know Your Company</MenuItem>
+						<MenuItem>Joining Day Information</MenuItem>
+						<MenuItem>Feedback</MenuItem>
+						<MenuItem>Background Check</MenuItem>
+					</SubMenu>
+					<Menuitem icon={<FaCog />}>Settings</Menuitem>
+				</Menu>
+			</SidebarContent>
+
+			<SidebarFooter></SidebarFooter>
 		</ProSidebar>
 	);
 };
