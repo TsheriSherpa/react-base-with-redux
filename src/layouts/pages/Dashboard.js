@@ -3,7 +3,7 @@ import MasterLayout from "./MasterLayout";
 
 function Dashboard() {
 	return (
-		<MasterLayout>
+		<MasterLayout navbarTitle={"Dashboard"}>
 			<h1>Dashboard</h1>
 		</MasterLayout>
 	);

@@ -49,6 +49,12 @@ const Sidebar = () => {
 		},
 		brandName: {
 			marginRight: "80px"
+		},
+		sideBarHeader: {
+			height: "56px",
+			display: "flex",
+			flexDirection: "column",
+			justifyContent: "center"
 		}
 	};
 
@@ -69,7 +75,7 @@ const Sidebar = () => {
 		navigate("/");
 	}
 
-	const handleBrandHover = (e) => {
+	const setCursorToPointer = (e) => {
 		e.target.style.cursor = "pointer";
 	}
 
@@ -81,13 +87,13 @@ const Sidebar = () => {
 		
 	return (
 		<ProSidebar style={styles.sideBarHeight} collapsed={collapsed}>
-			<SidebarHeader>
+			<SidebarHeader style={styles.sideBarHeader}>
 				<div style={styles.headerItems} id="sidebarHeader">
-					<div className="headerBrandItem" id ="headerBrandItem" onMouseEnter={(e) => handleBrandHover(e)}>
+					<div className="headerBrandItem" id ="headerBrandItem" onMouseEnter={(e) => setCursorToPointer(e)}>
 						<span style={styles.brandName} onClick={handleBrandClick}>Payment Service</span>
 						<FiLogOut onClick={handleLogout} />	
 					</div>
-					<div style={styles.menuIcon}>
+					<div style={styles.menuIcon} onMouseEnter={(e) => setCursorToPointer(e)}>
 						<AiOutlineMenu onClick={onClickMenuIcon}/>
 					</div>
 				</div>
