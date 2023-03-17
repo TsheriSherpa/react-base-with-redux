@@ -2,12 +2,14 @@ FROM node:lts-alpine3.12 as build
 
 WORKDIR /frontend
 
-COPY package.json /frontend
+COPY frontend/package.json /frontend
 
-COPY package-lock.json /frontend
+COPY frontend/package-lock.json /frontend
 
 RUN npm install
 
-COPY . /frontend
+COPY frontend /frontend
+
+EXPOSE 4000
 
 ENTRYPOINT ["sh", "/frontend/entrypoint.sh"]

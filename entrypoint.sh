@@ -2,6 +2,6 @@
 
 echo "starting frontend server"
 
-npm start 
+npm run dev
 
 exec "$@"
