@@ -67,10 +67,10 @@ export default function Login() {
                         required
                         {
                             ...register("email",
-                            {
-                                required: true,
-                                pattern: { value: /^\S+@\S+$/i, message: "Enter valid email" },
-                                })} />
+                                { required: true }
+                            )
+                        }
+                    />
                     <input
                         id="pass"
                         type={passwordShown ? "text" : "password"}
@@ -81,7 +81,7 @@ export default function Login() {
                             ...register("password", {})
                         } />
                     
-                    <div className="show-password-div"onClick={togglePassword}>
+                    <div className="show-password-div" onClick={togglePassword}>
                         { showPassword && <FaRegEyeSlash id="hide-icon" />}
                         { !showPassword && <FaRegEye id="show-icon" />}
                     </div>
@@ -92,7 +92,9 @@ export default function Login() {
                         variant="primary"
                         disabled={isSubmitting}
                     >
-                        {isSubmitting &&  (<span className="spinner-border spinner-border-sm mr-1"></span>)} Login
+                        {isSubmitting &&
+                            (<span className="spinner-border spinner-border-sm mr-1"></span>)}
+                        Login
                     </Button>
                 </form>
             </div>

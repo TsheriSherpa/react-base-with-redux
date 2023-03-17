@@ -13,7 +13,8 @@ module.exports = {
 		})
 	],
 	devServer: {
-		port: 3000, // you can change the port
+		allowedHosts: "all",
+		port: 4000, // you can change the port
 		historyApiFallback: true
 	},
 	module: {
@@ -30,9 +31,9 @@ module.exports = {
 				use: ["style-loader", "css-loader", "sass-loader"],
 			},
 			{
-			test: /\.(png|woff|woff2|eot|ttf|svg)$/, // to import images and fonts
-			loader: "url-loader",
-			options: { limit: false },
+				test: /\.(png|woff|woff2|eot|ttf|svg)$/, // to import images and fonts
+				loader: "url-loader",
+				options: { limit: false },
 			},
 		],
 	},

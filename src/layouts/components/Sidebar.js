@@ -35,7 +35,9 @@ const Sidebar = () => {
 	const [collapsed, setCollapsed] = useState(false);
 	const styles = {
 		sideBarHeight: {
-			height: "145vh"
+			height: "145vh",
+			marginTop: "56px",
+			position: "fixed",
 		},
 		menuIcon: {
 			float: "right",
@@ -62,12 +64,17 @@ const Sidebar = () => {
 		setCollapsed(!collapsed);
 		var x = document.getElementById("headerBrandItem");
 		var y = document.getElementById("sidebarHeader");
+		var pageWarpper = document.getElementById("page-wrapper");
+		console.log(pageWarpper.style);
+
 		if (!collapsed) {
 			x.style.display = "none";
+			pageWarpper.style.marginLeft = "75px"; 
 			y.style.justifyContent = "center";
 		} else {
 			y.style.justifyContent = "flex-end";
 			setTimeout(() => x.style.display = "block", 300);
+			pageWarpper.style.marginLeft = "270px";
 		}
 	};
 
@@ -107,14 +114,14 @@ const Sidebar = () => {
 					<Menuitem icon={<FaUserTie />}>
 						<Link to="/consumer-apps">Consumer Apps </Link>
 					</Menuitem>
-					<SubMenu title="Stages" icon={<FaThList />}>
+					{/* <SubMenu title="Stages" icon={<FaThList />}>
 						<Menuitem>Offer Letter</Menuitem>
 						<MenuItem>Skill Matrix</MenuItem>
 						<MenuItem>Know Your Company</MenuItem>
 						<MenuItem>Joining Day Information</MenuItem>
 						<MenuItem>Feedback</MenuItem>
 						<MenuItem>Background Check</MenuItem>
-					</SubMenu>
+					</SubMenu> */}
 					<Menuitem icon={<FaCog />}>Settings</Menuitem>
 				</Menu>
 			</SidebarContent>

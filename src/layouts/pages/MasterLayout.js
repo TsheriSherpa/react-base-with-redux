@@ -1,16 +1,16 @@
 import AppNavbar from "../components/AppNavbar"
 import Sidebar from "../components/Sidebar"
 
-export default function MasterLayout ({ children, navbarTitle }) {
+export default function MasterLayout ({ children }) {
     return (
-        <div style={{ display: "flex" }}>
-            <div>
-                <Sidebar></Sidebar>
-            </div>
-            <div style={{ width: "100%" }}>
-                <AppNavbar navbarTitle={navbarTitle}></AppNavbar>
-                {children}
-            </div>
-        </div>
+        <div style={{ display: "block"}}>
+            <AppNavbar></AppNavbar>
+            <Sidebar></Sidebar>
+            <div className="page-wrapper" id='page-wrapper'>
+                <div className="content container-fluid">
+                    {children}
+                </div>
+             </div>
+         </div>
     )
 };
